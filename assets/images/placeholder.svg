@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" fill="none">
+  <rect width="800" height="450" fill="#f8fafc"/>
+  <rect x="0" y="0" width="800" height="450" fill="#e2e8f0"/>
+  <rect x="340" y="185" width="120" height="80" rx="8" fill="#cbd5e1"/>
+  <path d="M380 225 L410 205 L440 225 L440 250 H380 Z" fill="#94a3b8"/>
+  <circle cx="370" cy="210" r="10" fill="#94a3b8"/>
+  <text x="400" y="295" text-anchor="middle" font-family="Work Sans, sans-serif" font-size="14" fill="#94a3b8">Correio do Norte</text>
+</svg>
