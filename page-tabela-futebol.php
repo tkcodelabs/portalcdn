@@ -6,34 +6,18 @@
 get_header();
 
 $classificacao = [
-    [ 'pos' => 1, 'time' => 'Altos FC',        'p' => 22, 'j' => 8, 'v' => 7, 'e' => 1, 'd' => 0, 'gp' => 18, 'gc' => 5,  'sg' => 13 ],
-    [ 'pos' => 2, 'time' => 'River AC',         'p' => 19, 'j' => 8, 'v' => 6, 'e' => 1, 'd' => 1, 'gp' => 15, 'gc' => 7,  'sg' => 8  ],
-    [ 'pos' => 3, 'time' => 'Parnahyba SC',     'p' => 17, 'j' => 8, 'v' => 5, 'e' => 2, 'd' => 1, 'gp' => 14, 'gc' => 6,  'sg' => 8  ],
-    [ 'pos' => 4, 'time' => '4 de Julho',       'p' => 14, 'j' => 8, 'v' => 4, 'e' => 2, 'd' => 2, 'gp' => 11, 'gc' => 10, 'sg' => 1  ],
-    [ 'pos' => 5, 'time' => 'Tiradentes-PI',    'p' => 11, 'j' => 8, 'v' => 3, 'e' => 2, 'd' => 3, 'gp' => 9,  'gc' => 11, 'sg' => -2 ],
-    [ 'pos' => 6, 'time' => 'Flamengo-PI',      'p' => 9,  'j' => 8, 'v' => 3, 'e' => 0, 'd' => 5, 'gp' => 8,  'gc' => 14, 'sg' => -6 ],
-    [ 'pos' => 7, 'time' => 'Cori-Sabbá',       'p' => 6,  'j' => 8, 'v' => 2, 'e' => 0, 'd' => 6, 'gp' => 5,  'gc' => 16, 'sg' => -11 ],
-    [ 'pos' => 8, 'time' => 'Comercial-PI',     'p' => 3,  'j' => 8, 'v' => 1, 'e' => 0, 'd' => 7, 'gp' => 4,  'gc' => 20, 'sg' => -16 ],
+    [ 'pos' => '-', 'time' => 'Parnahyba SC', 'p' => 0, 'j' => 0, 'v' => 0, 'e' => 0, 'd' => 0, 'gp' => 0, 'gc' => 0,  'sg' => 0 ],
+    [ 'pos' => '-', 'time' => 'A Definir 1',  'p' => 0, 'j' => 0, 'v' => 0, 'e' => 0, 'd' => 0, 'gp' => 0, 'gc' => 0,  'sg' => 0 ],
+    [ 'pos' => '-', 'time' => 'A Definir 2',  'p' => 0, 'j' => 0, 'v' => 0, 'e' => 0, 'd' => 0, 'gp' => 0, 'gc' => 0,  'sg' => 0 ],
+    [ 'pos' => '-', 'time' => 'A Definir 3',  'p' => 0, 'j' => 0, 'v' => 0, 'e' => 0, 'd' => 0, 'gp' => 0, 'gc' => 0,  'sg' => 0 ],
 ];
 
 $proximos = [
-    [ 'data' => '08/03', 'hora' => '16h', 'mandante' => 'Parnahyba SC',  'visitante' => 'River AC',         'estadio' => 'Lindolfo Monteiro', 'comp' => 'Piauiense' ],
-    [ 'data' => '12/03', 'hora' => '19h', 'mandante' => 'Flamengo-PI',   'visitante' => 'Parnahyba SC',     'estadio' => 'Alberto Silva',     'comp' => 'Piauiense' ],
-    [ 'data' => '19/03', 'hora' => '16h', 'mandante' => 'Parnahyba SC',  'visitante' => '4 de Julho',       'estadio' => 'Lindolfo Monteiro', 'comp' => 'Piauiense' ],
-    [ 'data' => '26/03', 'hora' => '20h', 'mandante' => 'Altos FC',      'visitante' => 'Parnahyba SC',     'estadio' => 'Felipão',           'comp' => 'Copa NE'   ],
-    [ 'data' => '02/04', 'hora' => '16h', 'mandante' => 'Parnahyba SC',  'visitante' => 'Tiradentes-PI',    'estadio' => 'Lindolfo Monteiro', 'comp' => 'Piauiense' ],
-    [ 'data' => '09/04', 'hora' => '19h', 'mandante' => 'Parnahyba SC',  'visitante' => 'Cori-Sabbá',       'estadio' => 'Lindolfo Monteiro', 'comp' => 'Piauiense' ],
-    [ 'data' => '16/04', 'hora' => '16h', 'mandante' => 'Comercial-PI',  'visitante' => 'Parnahyba SC',     'estadio' => 'Verdão',            'comp' => 'Piauiense' ],
-    [ 'data' => '20/04', 'hora' => '20h', 'mandante' => 'Parnahyba SC',  'visitante' => 'Altos FC',         'estadio' => 'Lindolfo Monteiro', 'comp' => 'Copa NE'   ],
+    [ 'data' => '05/04', 'hora' => 'A Def.', 'mandante' => 'Adversário',   'visitante' => 'Parnahyba SC', 'estadio' => 'A Definir',    'comp' => 'Série D' ],
+    [ 'data' => '12/04', 'hora' => 'A Def.', 'mandante' => 'Parnahyba SC', 'visitante' => 'Adversário',   'estadio' => 'Pedro Alelaf', 'comp' => 'Série D' ],
 ];
 
-$resultados = [
-    [ 'data' => '01/03', 'mandante' => 'Parnahyba SC', 'gm' => 2, 'gv' => 1, 'visitante' => 'Cori-Sabbá',  'comp' => 'Piauiense' ],
-    [ 'data' => '22/02', 'mandante' => 'Flamengo-PI',  'gm' => 0, 'gv' => 0, 'visitante' => 'Parnahyba SC','comp' => 'Piauiense' ],
-    [ 'data' => '15/02', 'mandante' => 'Parnahyba SC', 'gm' => 3, 'gv' => 0, 'visitante' => 'Comercial-PI','comp' => 'Piauiense' ],
-    [ 'data' => '08/02', 'mandante' => 'River AC',     'gm' => 1, 'gv' => 2, 'visitante' => 'Parnahyba SC','comp' => 'Piauiense' ],
-    [ 'data' => '01/02', 'mandante' => 'Parnahyba SC', 'gm' => 1, 'gv' => 0, 'visitante' => '4 de Julho',  'comp' => 'Piauiense' ],
-];
+$resultados = [];
 ?>
 <main id="main-content" class="inst-page futebol-page">
 
@@ -44,9 +28,9 @@ $resultados = [
             <div class="hero-orb hero-orb-2" style="background:rgba(255,255,255,.1)"></div>
         </div>
         <div class="container inst-hero-inner">
-            <div class="inst-hero-badge">⚽ Campeonato Piauiense 2026</div>
+            <div class="inst-hero-badge">⚽ Brasileirão Série D 2026</div>
             <h1 class="inst-hero-title">Parnahyba SC<br><span>Tabela & Resultados</span></h1>
-            <p class="inst-hero-sub">Acompanhe o Leão do Norte na disputa pelo título piauiense de 2026. Todos os jogos, horários e classificação.</p>
+            <p class="inst-hero-sub">Acompanhe o <strong>Tubarão do Litoral</strong> na disputa da Série D de 2026! Fundado em 1913, o Parnahyba é o clube mais antigo do esporte piauiense e manda seus jogos no Estádio Pedro Alelaf. Relembre aqui também os recordes de Vavá e os craques do litoral.</p>
         </div>
     </section>
 
@@ -95,32 +79,39 @@ $resultados = [
         <!-- RESULTADOS -->
         <div class="ftab-content" id="tab-resultados">
             <div class="partidas-completas">
-            <?php foreach ( $resultados as $res ) :
-                $parna_manda  = $res['mandante']  === 'Parnahyba SC';
-                $parna_visita = $res['visitante'] === 'Parnahyba SC';
-                $gP = $parna_manda ? $res['gm'] : $res['gv'];
-                $gA = $parna_manda ? $res['gv'] : $res['gm'];
-                $result_class = $gP > $gA ? 'vitoria' : ( $gP < $gA ? 'derrota' : 'empate' );
-            ?>
-                <div class="pc-card pc-card--resultado pc-resultado--<?php echo $result_class; ?>">
-                    <div class="pc-resultado-badge"><?php echo $result_class === 'vitoria' ? '✅ Vitória' : ( $result_class === 'derrota' ? '❌ Derrota' : '🟡 Empate' ); ?></div>
-                    <div class="pc-comp-badge"><?php echo esc_html( $res['comp'] ); ?></div>
-                    <div class="pc-matchup">
-                        <div class="pc-team <?php echo $parna_manda ? 'pc-team--parna' : ''; ?>">
-                            <div class="pc-escudo"><?php echo $parna_manda ? '🔵' : '⚪'; ?></div>
-                            <span><?php echo esc_html( $res['mandante'] ); ?></span>
-                        </div>
-                        <div class="pc-vs-block">
-                            <span class="pc-placar"><?php echo $res['gm']; ?> — <?php echo $res['gv']; ?></span>
-                            <span class="pc-data"><?php echo esc_html( $res['data'] ); ?></span>
-                        </div>
-                        <div class="pc-team <?php echo $parna_visita ? 'pc-team--parna' : ''; ?>">
-                            <div class="pc-escudo"><?php echo $parna_visita ? '🔵' : '⚪'; ?></div>
-                            <span><?php echo esc_html( $res['visitante'] ); ?></span>
+            <?php if ( empty( $resultados ) ) : ?>
+                <div style="text-align:center; padding: 3rem 1rem; color: var(--color-text-mut)">
+                    <p style="font-size:1.125rem; font-weight:500;">⚽ O Tubarão do Litoral ainda não estreou esse ano.</p>
+                    <p style="font-size:.9rem; margin-top:.5rem;">A Série D começa no dia 5 de Abril! Fique ligado.</p>
+                </div>
+            <?php else : ?>
+                <?php foreach ( $resultados as $res ) :
+                    $parna_manda  = $res['mandante']  === 'Parnahyba SC';
+                    $parna_visita = $res['visitante'] === 'Parnahyba SC';
+                    $gP = $parna_manda ? $res['gm'] : $res['gv'];
+                    $gA = $parna_manda ? $res['gv'] : $res['gm'];
+                    $result_class = $gP > $gA ? 'vitoria' : ( $gP < $gA ? 'derrota' : 'empate' );
+                ?>
+                    <div class="pc-card pc-card--resultado pc-resultado--<?php echo $result_class; ?>">
+                        <div class="pc-resultado-badge"><?php echo $result_class === 'vitoria' ? '✅ Vitória' : ( $result_class === 'derrota' ? '❌ Derrota' : '🟡 Empate' ); ?></div>
+                        <div class="pc-comp-badge"><?php echo esc_html( $res['comp'] ); ?></div>
+                        <div class="pc-matchup">
+                            <div class="pc-team <?php echo $parna_manda ? 'pc-team--parna' : ''; ?>">
+                                <div class="pc-escudo"><?php echo $parna_manda ? '🔵' : '⚪'; ?></div>
+                                <span><?php echo esc_html( $res['mandante'] ); ?></span>
+                            </div>
+                            <div class="pc-vs-block">
+                                <span class="pc-placar"><?php echo $res['gm']; ?> — <?php echo $res['gv']; ?></span>
+                                <span class="pc-data"><?php echo esc_html( $res['data'] ); ?></span>
+                            </div>
+                            <div class="pc-team <?php echo $parna_visita ? 'pc-team--parna' : ''; ?>">
+                                <div class="pc-escudo"><?php echo $parna_visita ? '🔵' : '⚪'; ?></div>
+                                <span><?php echo esc_html( $res['visitante'] ); ?></span>
+                            </div>
                         </div>
                     </div>
-                </div>
-            <?php endforeach; ?>
+                <?php endforeach; ?>
+            <?php endif; ?>
             </div>
         </div>
 

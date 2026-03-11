@@ -69,11 +69,8 @@
     <!-- Widget: Agenda de Futebol — Parnahyba SC (redesigned) -->
     <?php
     $jogos = [
-        [ 'data' => '08/03', 'hora' => '16h', 'casa' => 'Parnahyba SC', 'fora' => 'River AC',      'competicao' => 'Piauiense', 'rodada' => '7ª Rod.' ],
-        [ 'data' => '12/03', 'hora' => '19h', 'casa' => 'Flamengo-PI',  'fora' => 'Parnahyba SC',  'competicao' => 'Piauiense', 'rodada' => '8ª Rod.' ],
-        [ 'data' => '19/03', 'hora' => '16h', 'casa' => 'Parnahyba SC', 'fora' => '4 de Julho',    'competicao' => 'Piauiense', 'rodada' => '9ª Rod.' ],
-        [ 'data' => '26/03', 'hora' => '20h', 'casa' => 'Altos FC',     'fora' => 'Parnahyba SC',  'competicao' => 'Copa NE',   'rodada' => 'Fase 2'  ],
-        [ 'data' => '02/04', 'hora' => '16h', 'casa' => 'Parnahyba SC', 'fora' => 'Tiradentes-PI', 'competicao' => 'Piauiense', 'rodada' => '10ª Rod.' ],
+        [ 'data' => '05/04', 'hora' => 'A Dif.', 'casa' => 'A Definir', 'fora' => 'Parnahyba SC', 'competicao' => 'Br. Série D', 'rodada' => '1ª Rod.' ],
+        [ 'data' => '12/04', 'hora' => 'A Dif.', 'casa' => 'Parnahyba SC', 'fora' => 'A Definir', 'competicao' => 'Br. Série D', 'rodada' => '2ª Rod.' ],
     ];
     ?>
     <div class="widget-box widget-futebol">
