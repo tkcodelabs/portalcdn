@@ -139,6 +139,7 @@ function cdn_settings_init() {
     // === LANÇAMENTO DE LIVRO ===
     register_setting( 'cdn_livro', 'cdn_book_image' );
     register_setting( 'cdn_livro', 'cdn_book_badge' );
+    register_setting( 'cdn_livro', 'cdn_book_visibility' );
     register_setting( 'cdn_livro', 'cdn_book_title' );
     register_setting( 'cdn_livro', 'cdn_book_desc' );
     register_setting( 'cdn_livro', 'cdn_book_btn1_text' );
@@ -147,6 +148,7 @@ function cdn_settings_init() {
     register_setting( 'cdn_livro', 'cdn_book_btn2_url' );
 
     add_settings_section( 'cdn_secao_livro', 'Banner de Lançamento de Livro (Home e Sidebar)', '', 'cdn_livro' );
+    add_settings_field( 'cdn_book_visibility', 'Visibilidade', 'cdn_render_book_visibility_field', 'cdn_livro', 'cdn_secao_livro', ['label_for' => 'cdn_book_visibility'] );
     add_settings_field( 'cdn_book_image', 'Foto do Livro (Capa)', 'cdn_render_media_field', 'cdn_livro', 'cdn_secao_livro', ['label_for' => 'cdn_book_image'] );
     add_settings_field( 'cdn_book_badge', 'Badge Ex: "LANÇAMENTO"', 'cdn_render_text_field', 'cdn_livro', 'cdn_secao_livro', ['label_for' => 'cdn_book_badge'] );
     add_settings_field( 'cdn_book_title', 'Título do Livro', 'cdn_render_text_field', 'cdn_livro', 'cdn_secao_livro', ['label_for' => 'cdn_book_title'] );
@@ -200,6 +202,17 @@ function cdn_render_layout_field( $args ) {
             <p style="color:#777; font-size:12px; margin:4px 0 0 20px;">Uma matéria por linha com conteúdo completo já exibido. Estilo blog/revista.</p>
         </label>
     </div>
+    <?php
+}
+
+function cdn_render_book_visibility_field( $args ) {
+    $val = get_option( $args['label_for'], 'home' );
+    ?>
+    <select id="<?php echo esc_attr( $args['label_for'] ); ?>" name="<?php echo esc_attr( $args['label_for'] ); ?>">
+        <option value="disabled" <?php selected( $val, 'disabled' ); ?>>Desativar</option>
+        <option value="all" <?php selected( $val, 'all' ); ?>>Mostrar no site todo</option>
+        <option value="home" <?php selected( $val, 'home' ); ?>>Mostrar apenas na tela inicial</option>
+    </select>
     <?php
 }
 

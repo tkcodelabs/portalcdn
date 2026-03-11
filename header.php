@@ -12,7 +12,7 @@
     (function(){
         try {
             var savedTheme = localStorage.getItem('cdn_theme');
-            if(savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)){
+            if(savedTheme === 'dark'){
                 document.documentElement.setAttribute('data-theme', 'dark');
             }
         } catch(e){}

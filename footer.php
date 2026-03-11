@@ -15,6 +15,18 @@ $btn1_url   = get_option('cdn_book_btn1_url')  ?: home_url( '/o-despertar-da-ama
 $btn2_text  = get_option('cdn_book_btn2_text') ?: 'COMPRAR AGORA';
 $btn2_url   = get_option('cdn_book_btn2_url')  ?: home_url( '/loja/' );
 ?>
+<?php
+$book_visibility = get_option('cdn_book_visibility', 'home');
+$show_book_promo = false;
+
+if ( $book_visibility === 'all' ) {
+    $show_book_promo = true;
+} elseif ( $book_visibility === 'home' && ( is_front_page() || is_home() ) ) {
+    $show_book_promo = true;
+}
+
+if ( $show_book_promo ) :
+?>
 <!-- ====== PROMO SECTION (Book / Special) ====== -->
 <section class="promo-section">
     <div class="container promo-inner">
@@ -35,6 +47,7 @@ $btn2_url   = get_option('cdn_book_btn2_url')  ?: home_url( '/loja/' );
         </div>
     </div>
 </section>
+<?php endif; ?>
 
 <!-- ====== SITE FOOTER ====== -->
 <footer class="site-footer" role="contentinfo">
