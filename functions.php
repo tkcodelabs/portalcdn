@@ -18,6 +18,15 @@ require_once get_template_directory() . '/inc/smtp.php';
 // Carregar Activity Log (monitoramento de eventos e arquivos)
 require_once get_template_directory() . '/inc/activity-log.php';
 
+// Desativar adivinhação automática de URLs do WordPress (URL Guessing)
+// Previne que URLs com Erro 404 redirecionem acidentalmente para posts com letras parecidas
+add_filter( 'redirect_canonical', function( $redirect_url ) {
+    if ( is_404() && ! isset( $_GET['p'] ) ) {
+        return false;
+    }
+    return $redirect_url;
+});
+
 // ============================================================
 // SETUP DO TEMA
 // ============================================================

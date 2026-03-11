@@ -10,7 +10,7 @@ get_header();
         <h1 class="error-title">Página não encontrada</h1>
         <p class="error-desc">A página que você está procurando não existe ou foi movida.</p>
         <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="btn-primary" style="padding:.875rem 2rem">
-            <span class="material-symbols-outlined" aria-hidden="true">home</span> Voltar à Home
+            <span class="material-symbols-outlined" aria-hidden="true">home</span> Voltar para tela inicial
         </a>
         <div style="margin-top:3rem;max-width:480px;margin-left:auto;margin-right:auto">
             <form role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>" style="display:flex;gap:.5rem">
