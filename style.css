@@ -86,7 +86,9 @@ Tags:        news, magazine, responsive, two-columns, custom-menu, featured-imag
 html {
    scroll-behavior: smooth;
    font-size: 16px;
-   -webkit-text-size-adjust: 100%
+   -webkit-text-size-adjust: 100%;
+   overflow-x: hidden;
+   max-width: 100%;
 }
 
 body {
@@ -97,6 +99,7 @@ body {
    -webkit-font-smoothing: antialiased;
    transition: background-color var(--trans-base), color var(--trans-base);
    overflow-x: hidden;
+   max-width: 100%;
 }
 
 a {
@@ -133,7 +136,9 @@ button {
 .container {
    max-width: var(--max-width);
    margin: 0 auto;
-   padding: 0 1rem
+   padding: 0 1rem;
+   width: 100%;
+   box-sizing: border-box;
 }
 
 .sr-only {
@@ -657,13 +662,16 @@ button {
    background: var(--color-accent-red);
    color: #fff;
    padding: .4rem 0;
-   overflow: hidden
+   overflow: hidden;
+   max-width: 100vw;
 }
 
 .breaking-inner {
    display: flex;
    align-items: center;
-   gap: 1rem
+   gap: 1rem;
+   overflow: hidden;
+   max-width: 100%;
 }
 
 .breaking-label {
@@ -1619,7 +1627,40 @@ button {
    line-height: 1.8;
    color: #374151;
    text-align: justify;
+   overflow-wrap: break-word;
+   word-wrap: break-word;
 }
+
+/* ==== CONTEÚDO RESPONSIVO (Impedir quebra mobile) ==== */
+.post-content img,
+.post-content iframe,
+.post-content embed,
+.post-content object,
+.post-content video,
+.post-content .wp-block-embed {
+   max-width: 100% !important;
+   height: auto;
+}
+
+.post-content pre, 
+.post-content code {
+   white-space: pre-wrap;
+   word-break: break-word;
+   max-width: 100%;
+   overflow-x: auto;
+}
+
+.post-content table {
+   display: block;
+   width: 100%;
+   overflow-x: auto;
+   -webkit-overflow-scrolling: touch;
+}
+
+.post-content a {
+   word-break: break-word;
+}
+/* ==================================================== */
 
 .post-content p {
    margin-bottom: 1.5rem
@@ -3231,7 +3272,7 @@ button {
 .contato-form-wrap {
    background: #fff;
    border: 1px solid var(--color-border);
-   border-radius: var(--radius-xl);
+   border-radius: var(--radius-lg);
    padding: 2.5rem;
 }
 
@@ -3801,6 +3842,10 @@ button {
       font-size: 14px;
    }
 
+   .dev-badge-float::before,
+   .dev-badge-float::after {
+      display: none;
+   }
 }
 
 /* ============================================================
@@ -3882,11 +3927,22 @@ button {
    /* Header principal mais compacto */
    .header-main {
       padding: .625rem 0;
+      gap: .5rem;
+      flex-wrap: nowrap;
+      min-width: 0;
+   }
+
+   .site-logo {
+      min-width: 0;
+      flex-shrink: 1;
    }
 
    /* Logo menor */
    .logo-text {
       font-size: 1.25rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
    }
 
    /* Botão edição: ocultar texto, manter ícone */
@@ -4305,6 +4361,15 @@ button {
    }
 }
 
+@media (max-width: 767px) {
+   .formatos-grid,
+   .mvv-grid,
+   .premios-grid,
+   .partidas-completas {
+      grid-template-columns: 1fr;
+   }
+}
+
 /* ---- PAINEL CDN (ADMIN) ---- */
 @media (max-width: 767px) {
 
@@ -4460,7 +4525,7 @@ button {
 
 @media(max-width: 768px) {
    .hero-thumbnail-wrap {
-      min-height: 250px;
+      min-height: auto !important;
    }
 }
 
