@@ -73,35 +73,48 @@ function cdn_settings_init() {
     // === ANÚNCIOS ===
     register_setting( 'cdn_anuncios', 'cdn_ad_home_url' );
     register_setting( 'cdn_anuncios', 'cdn_ad_home_link' );
-    register_setting( 'cdn_anuncios', 'cdn_sidebar_ad1_img' );
-    register_setting( 'cdn_anuncios', 'cdn_sidebar_ad1_link' );
-    register_setting( 'cdn_anuncios', 'cdn_sidebar_ad2_img' );
-    register_setting( 'cdn_anuncios', 'cdn_sidebar_ad2_link' );
-    register_setting( 'cdn_anuncios', 'cdn_sidebar_ad3_img' );
-    register_setting( 'cdn_anuncios', 'cdn_sidebar_ad3_link' );
+    
+    // Loop to register up to 7 ads for each area
+    for ($i = 1; $i <= 7; $i++) {
+        // Sidebar ads
+        register_setting( 'cdn_anuncios', 'cdn_sidebar_ad'.$i.'_img' );
+        register_setting( 'cdn_anuncios', 'cdn_sidebar_ad'.$i.'_link' );
+        
+        // Single internal ads (starts with no number for index 1)
+        $simg = ($i === 1) ? 'cdn_single_ad_img' : 'cdn_single_ad'.$i.'_img';
+        $slnk = ($i === 1) ? 'cdn_single_ad_link' : 'cdn_single_ad'.$i.'_link';
+        register_setting( 'cdn_anuncios', $simg );
+        register_setting( 'cdn_anuncios', $slnk );
+        
+        // Single sidebar ads
+        $ssimg = ($i === 1) ? 'cdn_single_sidebar_ad_img' : 'cdn_single_sidebar_ad'.$i.'_img';
+        $sslnk = ($i === 1) ? 'cdn_single_sidebar_ad_link' : 'cdn_single_sidebar_ad'.$i.'_link';
+        register_setting( 'cdn_anuncios', $ssimg );
+        register_setting( 'cdn_anuncios', $sslnk );
+    }
 
     add_settings_section( 'cdn_secao_anuncios', 'Anúncio Principal (Home)', '', 'cdn_anuncios' );
     add_settings_field( 'cdn_ad_home_url', 'Imagem do Anúncio (ex: 970x90)', 'cdn_render_media_field', 'cdn_anuncios', 'cdn_secao_anuncios', ['label_for' => 'cdn_ad_home_url'] );
     add_settings_field( 'cdn_ad_home_link', 'Link de Destino', 'cdn_render_text_field', 'cdn_anuncios', 'cdn_secao_anuncios', ['label_for' => 'cdn_ad_home_link'] );
     
     add_settings_section( 'cdn_secao_sidebar_ads', 'Anúncios da Sidebar', '', 'cdn_anuncios' );
-    add_settings_field( 'cdn_sidebar_ad1_img', 'Sidebar Ad #1 - Imagem', 'cdn_render_media_field', 'cdn_anuncios', 'cdn_secao_sidebar_ads', ['label_for' => 'cdn_sidebar_ad1_img', 'desc' => 'Tamanho recomendado: 360px de largura. A altura é automática (ex: 360x250 ou 360x600)'] );
-    add_settings_field( 'cdn_sidebar_ad1_link', 'Sidebar Ad #1 - Link', 'cdn_render_text_field', 'cdn_anuncios', 'cdn_secao_sidebar_ads', ['label_for' => 'cdn_sidebar_ad1_link'] );
-    add_settings_field( 'cdn_sidebar_ad2_img', 'Sidebar Ad #2 - Imagem', 'cdn_render_media_field', 'cdn_anuncios', 'cdn_secao_sidebar_ads', ['label_for' => 'cdn_sidebar_ad2_img'] );
-    add_settings_field( 'cdn_sidebar_ad2_link', 'Sidebar Ad #2 - Link', 'cdn_render_text_field', 'cdn_anuncios', 'cdn_secao_sidebar_ads', ['label_for' => 'cdn_sidebar_ad2_link'] );
-    add_settings_field( 'cdn_sidebar_ad3_img', 'Sidebar Ad #3 - Imagem', 'cdn_render_media_field', 'cdn_anuncios', 'cdn_secao_sidebar_ads', ['label_for' => 'cdn_sidebar_ad3_img'] );
-    add_settings_field( 'cdn_sidebar_ad3_link', 'Sidebar Ad #3 - Link', 'cdn_render_text_field', 'cdn_anuncios', 'cdn_secao_sidebar_ads', ['label_for' => 'cdn_sidebar_ad3_link'] );
-
-    register_setting( 'cdn_anuncios', 'cdn_single_ad_img' );
-    register_setting( 'cdn_anuncios', 'cdn_single_ad_link' );
-    register_setting( 'cdn_anuncios', 'cdn_single_sidebar_ad_img' );
-    register_setting( 'cdn_anuncios', 'cdn_single_sidebar_ad_link' );
+    for ($i = 1; $i <= 7; $i++) {
+        add_settings_field( 'cdn_sidebar_ad'.$i.'_img', 'Sidebar Ad #'.$i.' - Imagem', 'cdn_render_media_field', 'cdn_anuncios', 'cdn_secao_sidebar_ads', ['label_for' => 'cdn_sidebar_ad'.$i.'_img', 'desc' => ($i === 1 ? 'Tamanho recomendado: 360px de largura.' : '')] );
+        add_settings_field( 'cdn_sidebar_ad'.$i.'_link', 'Sidebar Ad #'.$i.' - Link', 'cdn_render_text_field', 'cdn_anuncios', 'cdn_secao_sidebar_ads', ['label_for' => 'cdn_sidebar_ad'.$i.'_link'] );
+    }
 
     add_settings_section( 'cdn_secao_single_ads', 'Anúncios Internos (Dentro da Matéria)', '', 'cdn_anuncios' );
-    add_settings_field( 'cdn_single_ad_img', 'Anúncio Meio da Matéria (728x90)', 'cdn_render_media_field', 'cdn_anuncios', 'cdn_secao_single_ads', ['label_for' => 'cdn_single_ad_img'] );
-    add_settings_field( 'cdn_single_ad_link', 'Link Destino', 'cdn_render_text_field', 'cdn_anuncios', 'cdn_secao_single_ads', ['label_for' => 'cdn_single_ad_link'] );
-    add_settings_field( 'cdn_single_sidebar_ad_img', 'Anúncio Sidebar Matéria (300x250)', 'cdn_render_media_field', 'cdn_anuncios', 'cdn_secao_single_ads', ['label_for' => 'cdn_single_sidebar_ad_img'] );
-    add_settings_field( 'cdn_single_sidebar_ad_link', 'Link Destino', 'cdn_render_text_field', 'cdn_anuncios', 'cdn_secao_single_ads', ['label_for' => 'cdn_single_sidebar_ad_link'] );
+    for ($i = 1; $i <= 7; $i++) {
+        $simg = ($i === 1) ? 'cdn_single_ad_img' : 'cdn_single_ad'.$i.'_img';
+        $slnk = ($i === 1) ? 'cdn_single_ad_link' : 'cdn_single_ad'.$i.'_link';
+        add_settings_field( $simg, 'Anúncio Meio da Matéria #'.$i.' (728x90)', 'cdn_render_media_field', 'cdn_anuncios', 'cdn_secao_single_ads', ['label_for' => $simg] );
+        add_settings_field( $slnk, 'Link Destino #'.$i, 'cdn_render_text_field', 'cdn_anuncios', 'cdn_secao_single_ads', ['label_for' => $slnk] );
+        
+        $ssimg = ($i === 1) ? 'cdn_single_sidebar_ad_img' : 'cdn_single_sidebar_ad'.$i.'_img';
+        $sslnk = ($i === 1) ? 'cdn_single_sidebar_ad_link' : 'cdn_single_sidebar_ad'.$i.'_link';
+        add_settings_field( $ssimg, 'Anúncio Sidebar Matéria #'.$i.' (300x250)', 'cdn_render_media_field', 'cdn_anuncios', 'cdn_secao_single_ads', ['label_for' => $ssimg] );
+        add_settings_field( $sslnk, 'Link Destino #'.$i, 'cdn_render_text_field', 'cdn_anuncios', 'cdn_secao_single_ads', ['label_for' => $sslnk] );
+    }
 
     // === RODAPÉ (FOOTER) ===
     register_setting( 'cdn_footer', 'cdn_footer_logo' );

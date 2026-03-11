@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
         downloadBtn.setAttribute('target', '_blank');
     }
 
-    const url = '<?php echo esc_url( $pdf_url ); ?>';
+    const url = '<?php echo esc_url( wp_make_link_relative( $pdf_url ) ); ?>';
     pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
 
     const flipbookEl = document.getElementById('flipbook');

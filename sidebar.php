@@ -203,7 +203,7 @@
 
     <!-- Widget: Área publicitária (Dinâmica em Loop) -->
     <?php
-    for ( $i = 1; $i <= 3; $i++ ) {
+    for ( $i = 1; $i <= 7; $i++ ) {
         $img = get_option( 'cdn_sidebar_ad' . $i . '_img' );
         $link = get_option( 'cdn_sidebar_ad' . $i . '_link' );
         

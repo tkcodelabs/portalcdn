@@ -89,23 +89,29 @@ while ( have_posts() ) :
             </figure>
             <?php endif; ?>
 
-            <!-- Ad (inline topo) -->
+            <!-- Ads (inline topo) -->
             <?php 
-            $single_ad_img  = get_option('cdn_single_ad_img');
-            $single_ad_link = get_option('cdn_single_ad_link');
-            if ( $single_ad_img ) : 
+            for ($i = 1; $i <= 7; $i++) {
+                $img_key = ($i === 1) ? 'cdn_single_ad_img' : 'cdn_single_ad'.$i.'_img';
+                $link_key = ($i === 1) ? 'cdn_single_ad_link' : 'cdn_single_ad'.$i.'_link';
+                $img = get_option($img_key);
+                $link = get_option($link_key);
+                
+                if ($img) :
+                ?>
+                <div class="ad-banner ad-banner-single" role="complementary" aria-label="Publicidade">
+                    <a href="<?php echo esc_url($link ?: '#'); ?>" target="_blank" rel="noopener noreferrer">
+                        <img src="<?php echo esc_url($img); ?>" alt="Publicidade">
+                    </a>
+                </div>
+                <?php elseif ($i === 1) : ?>
+                <div class="ad-banner ad-banner-single" role="complementary" aria-label="Publicidade">
+                    <span class="ad-label">Publicidade</span>
+                    <span class="ad-text" style="line-height:1.4">Espaço para Anúncio<br><small style="font-size:0.75rem">728 x 90 px</small></span>
+                </div>
+                <?php endif;
+            }
             ?>
-            <div class="ad-banner ad-banner-single" role="complementary" aria-label="Publicidade">
-                <a href="<?php echo esc_url($single_ad_link ?: '#'); ?>" target="_blank" rel="noopener noreferrer">
-                    <img src="<?php echo esc_url($single_ad_img); ?>" alt="Publicidade">
-                </a>
-            </div>
-            <?php else : ?>
-            <div class="ad-banner ad-banner-single" role="complementary" aria-label="Publicidade">
-                <span class="ad-label">Publicidade</span>
-                <span class="ad-text" style="line-height:1.4">Espaço para Anúncio<br><small style="font-size:0.75rem">728 x 90 px</small></span>
-            </div>
-            <?php endif; ?>
 
             <!-- Post Content -->
             <div class="post-content" itemprop="articleBody">

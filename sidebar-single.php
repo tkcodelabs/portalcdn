@@ -61,25 +61,31 @@
 
     <!-- Publicidade (Dinâmica Single Sidebar) -->
     <?php 
-    $single_sb_ad_img  = get_option('cdn_single_sidebar_ad_img');
-    $single_sb_ad_link = get_option('cdn_single_sidebar_ad_link');
-    if ( $single_sb_ad_img ) : 
+    for ($i = 1; $i <= 7; $i++) {
+        $img_key = ($i === 1) ? 'cdn_single_sidebar_ad_img' : 'cdn_single_sidebar_ad'.$i.'_img';
+        $link_key = ($i === 1) ? 'cdn_single_sidebar_ad_link' : 'cdn_single_sidebar_ad'.$i.'_link';
+        $img = get_option($img_key);
+        $link = get_option($link_key);
+        
+        if ($img) :
+        ?>
+        <div class="sidebar-ad" role="complementary" aria-label="Espaço publicitário lateral">
+            <a href="<?php echo esc_url($link ?: '#'); ?>" target="_blank" rel="noopener noreferrer">
+                <img src="<?php echo esc_url($img); ?>" alt="Anúncio Comercial">
+            </a>
+        </div>
+        <?php elseif ($i === 1) : ?>
+        <div class="sidebar-ad" role="complementary" aria-label="Publicidade">
+            <span class="ad-label">Publicidade</span>
+            <span class="material-symbols-outlined ad-icon" aria-hidden="true">ads_click</span>
+            <p><strong>Espaço Publicitário</strong><br>(300×250)</p>
+            <p class="ad-contact">
+                <a href="mailto:comercial@correiodonorte.com.br">comercial@correiodonorte.com.br</a>
+            </p>
+        </div>
+        <?php endif;
+    }
     ?>
-    <div class="sidebar-ad" role="complementary" aria-label="Espaço publicitário lateral">
-        <a href="<?php echo esc_url($single_sb_ad_link ?: '#'); ?>" target="_blank" rel="noopener noreferrer">
-            <img src="<?php echo esc_url($single_sb_ad_img); ?>" alt="Anúncio Comercial">
-        </a>
-    </div>
-    <?php else : ?>
-    <div class="sidebar-ad" role="complementary" aria-label="Publicidade">
-        <span class="ad-label">Publicidade</span>
-        <span class="material-symbols-outlined ad-icon" aria-hidden="true">ads_click</span>
-        <p><strong>Espaço Publicitário</strong><br>(300×250)</p>
-        <p class="ad-contact">
-            <a href="mailto:comercial@correiodonorte.com.br">comercial@correiodonorte.com.br</a>
-        </p>
-    </div>
-    <?php endif; ?>
 
     <?php if ( is_active_sidebar( 'sidebar-single' ) ) dynamic_sidebar( 'sidebar-single' ); ?>
 
