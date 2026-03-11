@@ -153,39 +153,56 @@
 
     <!-- Widget: Eventos Culturais -->
     <?php
-    // Eventos fictícios — prontos para serem substituídos por um CPT ou plugin de eventos
-    $eventos = [
-        [
-            'data'   => '08/03',
-            'titulo' => 'Mostra de Artes Visuais do Piauí',
-            'local'  => 'Casa da Cultura, Parnaíba',
-            'link'   => '#',
-        ],
-        [
-            'data'   => '12/03',
-            'titulo' => 'Festival de Música Nordestina',
-            'local'  => 'Praça da Graça',
-            'link'   => '#',
-        ],
-        [
-            'data'   => '15/03',
-            'titulo' => 'Feira do Livro Piauiense 2026',
-            'local'  => 'Centro de Convenções',
-            'link'   => '#',
-        ],
-        [
-            'data'   => '20/03',
-            'titulo' => 'Espetáculo: Lendas do Delta',
-            'local'  => 'Teatro Municipal',
-            'link'   => '#',
-        ],
-        [
-            'data'   => '26/03',
-            'titulo' => 'Exposição Fotográfica Amazônia',
-            'local'  => 'Museu do Vento Norte',
-            'link'   => '#',
-        ],
-    ];
+    // Obter eventos do banco de dados (Painel CDN > Eventos)
+    $eventos = get_option( 'cdn_eventos_lista', [] );
+
+    // Fallback para eventos fictícios se a lista estiver vazia
+    if ( empty( $eventos ) ) {
+        $eventos = [
+            [
+                'data'   => '08/03',
+                'titulo' => 'Mostra de Artes Visuais do Piauí',
+                'local'  => 'Casa da Cultura, Parnaíba',
+                'link'   => '#',
+            ],
+            [
+                'data'   => '12/03',
+                'titulo' => 'Festival de Música Nordestina',
+                'local'  => 'Praça da Graça',
+                'link'   => '#',
+            ],
+            [
+                'data'   => '15/03',
+                'titulo' => 'Feira do Livro Piauiense 2026',
+                'local'  => 'Centro de Convenções',
+                'link'   => '#',
+            ],
+            [
+                'data'   => '20/03',
+                'titulo' => 'Espetáculo: Lendas do Delta',
+                'local'  => 'Teatro Municipal',
+                'link'   => '#',
+            ],
+            [
+                'data'   => '26/03',
+                'titulo' => 'Exposição Fotográfica Amazônia',
+                'local'  => 'Museu do Vento Norte',
+                'link'   => '#',
+            ],
+        ];
+    } else {
+        // Garantir que a data mostrada seja apenas Dia/Mês se for no formato DD/MM/YYYY
+        foreach ( $eventos as &$ev ) {
+            if ( strlen( $ev['data'] ) > 5 ) {
+                $parts = explode( '/', $ev['data'] );
+                if ( count( $parts ) >= 2 ) {
+                    $ev['data'] = $parts[0] . '/' . $parts[1];
+                }
+            }
+        }
+        // Mostrar apenas os 5 primeiros na sidebar
+        $eventos = array_slice( $eventos, 0, 5 );
+    }
     ?>
     <div class="widget-box widget-eventos">
         <h4 class="widget-title">

@@ -248,6 +248,7 @@ function cdn_options_page() {
             <a href="?page=painel-cdn&tab=anuncios" class="nav-tab <?php echo $active_tab == 'anuncios' ? 'nav-tab-active' : ''; ?>">Anúncios Gerais</a>
             <a href="?page=painel-cdn&tab=livro" class="nav-tab <?php echo $active_tab == 'livro' ? 'nav-tab-active' : ''; ?>">Lançamento de Livro</a>
             <a href="?page=painel-cdn&tab=futebol" class="nav-tab <?php echo $active_tab == 'futebol' ? 'nav-tab-active' : ''; ?>">⚽ Futebol</a>
+            <a href="?page=painel-cdn&tab=eventos" class="nav-tab <?php echo $active_tab == 'eventos' ? 'nav-tab-active' : ''; ?>">🎭 Eventos</a>
             <a href="?page=painel-cdn&tab=newsletter" class="nav-tab <?php echo $active_tab == 'newsletter' ? 'nav-tab-active' : ''; ?>">✉️ Newsletter</a>
             <a href="?page=painel-cdn&tab=smtp" class="nav-tab <?php echo $active_tab == 'smtp' ? 'nav-tab-active' : ''; ?>">&#128231; E-mail / SMTP</a>
             <a href="?page=painel-cdn&tab=activity_log" class="nav-tab <?php echo $active_tab == 'activity_log' ? 'nav-tab-active' : ''; ?>" style="<?php echo $active_tab == 'activity_log' ? '' : 'background:#fff3cd;color:#856404;'; ?>">🔔 Activity Log</a>
@@ -256,7 +257,7 @@ function cdn_options_page() {
 
         <?php if ( $active_tab === 'activity_log' ) :
             cdn_render_activity_log_tab();
-        elseif ( $active_tab !== 'ferramentas' && $active_tab !== 'newsletter' && $active_tab !== 'smtp' && $active_tab !== 'futebol' ) : ?>
+        elseif ( $active_tab !== 'ferramentas' && $active_tab !== 'newsletter' && $active_tab !== 'smtp' && $active_tab !== 'futebol' && $active_tab !== 'eventos' ) : ?>
         <form method="post" action="options.php" style="background:#fff; padding: 20px; border-radius: 5px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
             <?php
             if ( $active_tab == 'personalizacao' ) {
@@ -287,6 +288,11 @@ function cdn_options_page() {
         <!-- === ABA FUTEBOL === -->
         <div>
             <?php cdn_render_futebol_tab(); ?>
+        </div>
+        <?php elseif ( $active_tab === 'eventos' ) : ?>
+        <!-- === ABA EVENTOS === -->
+        <div>
+            <?php cdn_render_eventos_tab(); ?>
         </div>
         <?php else : ?>
         <!-- === ABA DE FERRAMENTAS === -->

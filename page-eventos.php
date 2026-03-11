@@ -5,75 +5,80 @@
  */
 get_header();
 
-// Eventos fictícios (hardcoded para demonstração do template)
-$eventos_lista = [
-    [
-        'data'      => '08/03/2026',
-        'dia_semana'=> 'Domingo',
-        'hora'      => '19:00',
-        'titulo'    => 'Mostra de Artes Visuais do Piauí',
-        'local'     => 'Casa da Cultura, Parnaíba',
-        'desc'      => 'Exposição com artistas locais explorando raízes nordestinas através da pintura e escultura. Entrada Gratuita.',
-        'categ'     => 'Exposição',
-        'link'      => '#',
-        'destaque'  => true
-    ],
-    [
-        'data'      => '12/03/2026',
-        'dia_semana'=> 'Quinta-feira',
-        'hora'      => '20:30',
-        'titulo'    => 'Festival de Música Nordestina',
-        'local'     => 'Praça da Graça',
-        'desc'      => 'Bandas regionais de forró pé-de-serra animam a noite no centro histórico da cidade.',
-        'categ'     => 'Música',
-        'link'      => '#',
-        'destaque'  => false
-    ],
-    [
-        'data'      => '15/03/2026',
-        'dia_semana'=> 'Domingo',
-        'hora'      => '14:00 às 22:00',
-        'titulo'    => 'Feira do Livro Piauiense 2026',
-        'local'     => 'Centro de Convenções',
-        'desc'      => 'Encontro com centenas de autores locais, debates sobre a literatura regional, oficinas gratuitas para jovens e lançamentos de livros.',
-        'categ'     => 'Literatura',
-        'link'      => '#',
-        'destaque'  => true
-    ],
-    [
-        'data'      => '20/03/2026',
-        'dia_semana'=> 'Sexta-feira',
-        'hora'      => '19:00',
-        'titulo'    => 'Espetáculo: Lendas do Delta',
-        'local'     => 'Teatro Municipal',
-        'desc'      => 'Peça de teatro que reconta fábulas e mitos dos pescadores originários do Delta do Parnaíba.',
-        'categ'     => 'Teatro',
-        'link'      => '#',
-        'destaque'  => false
-    ],
-    [
-        'data'      => '26/03/2026',
-        'dia_semana'=> 'Quinta-feira',
-        'hora'      => '10:00 às 18:00',
-        'titulo'    => 'Exposição Fotográfica Amazônia',
-        'local'     => 'Museu do Vento Norte',
-        'desc'      => 'Fotografias vencedoras do concurso nacional de preservação ambiental na zona rural do norte.',
-        'categ'     => 'Fotografia',
-        'link'      => '#',
-        'destaque'  => false
-    ],
-    [
-        'data'      => '02/04/2026',
-        'dia_semana'=> 'Quinta-feira',
-        'hora'      => '16:00',
-        'titulo'    => 'Oficina de Cordel para Iniciantes',
-        'local'     => 'Biblioteca Pública Estadual',
-        'desc'      => 'Aprenda métrica, rima, xilogravura e a história da literatura de cordel com mestres renomados.',
-        'categ'     => 'Oficina',
-        'link'      => '#',
-        'destaque'  => false
-    ]
-];
+// Obter eventos do banco de dados (Painel CDN > Eventos)
+$eventos_lista = get_option( 'cdn_eventos_lista', [] );
+
+// Fallback para eventos fictícios se a lista estiver vazia
+if ( empty( $eventos_lista ) ) {
+    $eventos_lista = [
+        [
+            'data'      => '08/03/2026',
+            'dia_semana'=> 'Domingo',
+            'hora'      => '19:00',
+            'titulo'    => 'Mostra de Artes Visuais do Piauí',
+            'local'     => 'Casa da Cultura, Parnaíba',
+            'desc'      => 'Exposição com artistas locais explorando raízes nordestinas através da pintura e escultura. Entrada Gratuita.',
+            'categ'     => 'Exposição',
+            'link'      => '#',
+            'destaque'  => true
+        ],
+        [
+            'data'      => '12/03/2026',
+            'dia_semana'=> 'Quinta-feira',
+            'hora'      => '20:30',
+            'titulo'    => 'Festival de Música Nordestina',
+            'local'     => 'Praça da Graça',
+            'desc'      => 'Bandas regionais de forró pé-de-serra animam a noite no centro histórico da cidade.',
+            'categ'     => 'Música',
+            'link'      => '#',
+            'destaque'  => false
+        ],
+        [
+            'data'      => '15/03/2026',
+            'dia_semana'=> 'Domingo',
+            'hora'      => '14:00 às 22:00',
+            'titulo'    => 'Feira do Livro Piauiense 2026',
+            'local'     => 'Centro de Convenções',
+            'desc'      => 'Encontro com centenas de autores locais, debates sobre a literatura regional, oficinas gratuitas para jovens e lançamentos de livros.',
+            'categ'     => 'Literatura',
+            'link'      => '#',
+            'destaque'  => true
+        ],
+        [
+            'data'      => '20/03/2026',
+            'dia_semana'=> 'Sexta-feira',
+            'hora'      => '19:00',
+            'titulo'    => 'Espetáculo: Lendas do Delta',
+            'local'     => 'Teatro Municipal',
+            'desc'      => 'Peça de teatro que reconta fábulas e mitos dos pescadores originários do Delta do Parnaíba.',
+            'categ'     => 'Teatro',
+            'link'      => '#',
+            'destaque'  => false
+        ],
+        [
+            'data'      => '26/03/2026',
+            'dia_semana'=> 'Quinta-feira',
+            'hora'      => '10:00 às 18:00',
+            'titulo'    => 'Exposição Fotográfica Amazônia',
+            'local'     => 'Museu do Vento Norte',
+            'desc'      => 'Fotografias vencedoras do concurso nacional de preservação ambiental na zona rural do norte.',
+            'categ'     => 'Fotografia',
+            'link'      => '#',
+            'destaque'  => false
+        ],
+        [
+            'data'      => '02/04/2026',
+            'dia_semana'=> 'Quinta-feira',
+            'hora'      => '16:00',
+            'titulo'    => 'Oficina de Cordel para Iniciantes',
+            'local'     => 'Biblioteca Pública Estadual',
+            'desc'      => 'Aprenda métrica, rima, xilogravura e a história da literatura de cordel com mestres renomados.',
+            'categ'     => 'Oficina',
+            'link'      => '#',
+            'destaque'  => false
+        ]
+    ];
+}
 ?>
 <main id="main-content" class="inst-page eventos-page">
 

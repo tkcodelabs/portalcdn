@@ -9,6 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 // Carregar Painel CDN (Opções do Tema)
 require_once get_template_directory() . '/inc/theme-options.php';
 require_once get_template_directory() . '/inc/theme-futebol.php';
+require_once get_template_directory() . '/inc/theme-eventos.php';
 
 // Carregar Sistema de Newsletter
 require_once get_template_directory() . '/inc/newsletter.php';
