@@ -18,10 +18,11 @@ $btn2_url   = get_option('cdn_book_btn2_url')  ?: home_url( '/loja/' );
 <!-- ====== PROMO SECTION (Book / Special) ====== -->
 <section class="promo-section">
     <div class="container promo-inner">
-        <div class="promo-book-cover">
+        <div class="promo-book-cover" style="aspect-ratio: auto !important;">
             <img src="<?php echo esc_url( $book_img ); ?>"
                  alt="<?php echo esc_attr( $book_title ); ?>"
-                 loading="lazy">
+                 loading="lazy"
+                 style="width: 100%; height: auto; object-fit: contain !important;">
         </div>
         <div class="promo-content">
             <?php if ( $book_badge ) : ?><span class="promo-badge"><?php echo esc_html( $book_badge ); ?></span><?php endif; ?>
