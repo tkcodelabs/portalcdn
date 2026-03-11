@@ -96,6 +96,7 @@ body {
    line-height: 1.6;
    -webkit-font-smoothing: antialiased;
    transition: background-color var(--trans-base), color var(--trans-base);
+   overflow-x: hidden;
 }
 
 a {
@@ -107,7 +108,8 @@ a {
 img {
    max-width: 100%;
    height: auto;
-   display: block
+   display: block;
+   object-fit: cover;
 }
 
 ul,
@@ -1273,7 +1275,7 @@ button {
 
 .promo-book-cover {
    width: 100%;
-   max-width: 240px;
+   max-width: 320px;
    border-radius: var(--radius-md);
    overflow: hidden;
    box-shadow: 0 30px 60px rgba(0, 0, 0, .6);

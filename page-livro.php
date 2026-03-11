@@ -92,6 +92,7 @@ if ( ! $book_img ) {
 
     <!-- HTML structure ends, adding keyframes directly inside page stringency -->
     <style>
+        .book-hero { overflow: hidden; } /* Ensure orbs don't cause horizontal scroll */
         @keyframes floatOrb {
             from { transform: translate(0, 0) scale(1); }
             to { transform: translate(50px, -50px) scale(1.1); }
@@ -115,10 +116,15 @@ if ( ! $book_img ) {
                 justify-content: center;
             }
             .book-cover-wrapper img {
-                transform: rotateY(0deg) rotateX(0deg) !important;
+                transform: none !important;
+                max-width: 100% !important;
+                height: auto !important;
             }
             .book-cover-wrapper {
                 animation: none !important;
+            }
+            .book-cover-wrapper div:last-child {
+                display: none !important; /* hide spine illusion on mobile to prevent overflow bugs */
             }
         }
     </style>
