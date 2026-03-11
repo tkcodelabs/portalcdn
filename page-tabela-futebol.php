@@ -4,20 +4,27 @@
  * Template Post Type: page
  */
 get_header();
+// Buscar dados dinâmicos salvos no Painel CDN -> Futebol
+$classificacao = get_option( 'cdn_futebol_classificacao', [] );
+$proximos      = get_option( 'cdn_futebol_proximos', [] );
+$resultados    = get_option( 'cdn_futebol_resultados', [] );
 
-$classificacao = [
-    [ 'pos' => '-', 'time' => 'Parnahyba SC', 'p' => 0, 'j' => 0, 'v' => 0, 'e' => 0, 'd' => 0, 'gp' => 0, 'gc' => 0,  'sg' => 0 ],
-    [ 'pos' => '-', 'time' => 'A Definir 1',  'p' => 0, 'j' => 0, 'v' => 0, 'e' => 0, 'd' => 0, 'gp' => 0, 'gc' => 0,  'sg' => 0 ],
-    [ 'pos' => '-', 'time' => 'A Definir 2',  'p' => 0, 'j' => 0, 'v' => 0, 'e' => 0, 'd' => 0, 'gp' => 0, 'gc' => 0,  'sg' => 0 ],
-    [ 'pos' => '-', 'time' => 'A Definir 3',  'p' => 0, 'j' => 0, 'v' => 0, 'e' => 0, 'd' => 0, 'gp' => 0, 'gc' => 0,  'sg' => 0 ],
-];
+// Se os dados estiverem completamente vazios (primeiro uso), exibir placeholder
+if ( empty( $classificacao ) ) {
+    $classificacao = [
+        [ 'pos' => '-', 'time' => 'Parnahyba SC', 'p' => 0, 'j' => 0, 'v' => 0, 'e' => 0, 'd' => 0, 'gp' => 0, 'gc' => 0,  'sg' => 0 ],
+        [ 'pos' => '-', 'time' => 'A Definir 1',  'p' => 0, 'j' => 0, 'v' => 0, 'e' => 0, 'd' => 0, 'gp' => 0, 'gc' => 0,  'sg' => 0 ],
+        [ 'pos' => '-', 'time' => 'A Definir 2',  'p' => 0, 'j' => 0, 'v' => 0, 'e' => 0, 'd' => 0, 'gp' => 0, 'gc' => 0,  'sg' => 0 ],
+        [ 'pos' => '-', 'time' => 'A Definir 3',  'p' => 0, 'j' => 0, 'v' => 0, 'e' => 0, 'd' => 0, 'gp' => 0, 'gc' => 0,  'sg' => 0 ],
+    ];
+}
 
-$proximos = [
-    [ 'data' => '05/04', 'hora' => 'A Def.', 'mandante' => 'Adversário',   'visitante' => 'Parnahyba SC', 'estadio' => 'A Definir',    'comp' => 'Série D' ],
-    [ 'data' => '12/04', 'hora' => 'A Def.', 'mandante' => 'Parnahyba SC', 'visitante' => 'Adversário',   'estadio' => 'Pedro Alelaf', 'comp' => 'Série D' ],
-];
-
-$resultados = [];
+if ( empty( $proximos ) ) {
+    $proximos = [
+        [ 'data' => '05/04', 'hora' => 'A Def.', 'mandante' => 'Adversário',   'visitante' => 'Parnahyba SC', 'estadio' => 'A Definir',    'comp' => 'Série D' ],
+        [ 'data' => '12/04', 'hora' => 'A Def.', 'mandante' => 'Parnahyba SC', 'visitante' => 'Adversário',   'estadio' => 'Pedro Alelaf', 'comp' => 'Série D' ],
+    ];
+}
 ?>
 <main id="main-content" class="inst-page futebol-page">
 

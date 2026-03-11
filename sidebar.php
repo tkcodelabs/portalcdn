@@ -65,13 +65,24 @@
         </ul>
     </div>
     <?php endif; ?>
-
-    <!-- Widget: Agenda de Futebol — Parnahyba SC (redesigned) -->
+    
     <?php
-    $jogos = [
-        [ 'data' => '05/04', 'hora' => 'A Dif.', 'casa' => 'A Definir', 'fora' => 'Parnahyba SC', 'competicao' => 'Br. Série D', 'rodada' => '1ª Rod.' ],
-        [ 'data' => '12/04', 'hora' => 'A Dif.', 'casa' => 'Parnahyba SC', 'fora' => 'A Definir', 'competicao' => 'Br. Série D', 'rodada' => '2ª Rod.' ],
-    ];
+    // Widget: Agenda de Futebol — Parnahyba SC (redesigned)
+    $jogos = get_option( 'cdn_futebol_proximos', [] );
+    if ( empty( $jogos ) ) {
+        $jogos = [
+            [ 'data' => '05/04', 'hora' => 'A Dif.', 'casa' => 'A Definir', 'fora' => 'Parnahyba SC', 'competicao' => 'Br. Série D', 'rodada' => '1ª Rod.' ],
+            [ 'data' => '12/04', 'hora' => 'A Dif.', 'casa' => 'Parnahyba SC', 'fora' => 'A Definir', 'competicao' => 'Br. Série D', 'rodada' => '2ª Rod.' ],
+        ];
+    } else {
+        // Renomear chaves `mandante`/`visitante` para a estrutura que a sidebar antiga usa `casa`/`fora`
+        foreach ( $jogos as &$j ) {
+            $j['casa'] = $j['mandante'];
+            $j['fora'] = $j['visitante'];
+            $j['competicao'] = $j['comp'];
+            $j['rodada'] = '';
+        }
+    }
     ?>
     <div class="widget-box widget-futebol">
         <div class="futebol-header">
